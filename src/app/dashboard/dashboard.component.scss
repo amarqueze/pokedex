@@ -1,0 +1,115 @@
+.dashboard {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f1f2f6;
+    grid-template-rows: 60px 1fr;
+
+    .dashboard_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: linear-gradient(to right, #2a5298, #1e3c72);
+        box-shadow: 2px 4px 15px 5px rgba(0,0,0,0.28);
+
+        .dashboard_title {
+            padding-left: 1%;
+            img {     
+                width: 85px;
+                height: 45px;
+            }
+        }
+
+        .dashboard_avatar {
+            width: 300px;
+            height: 45px;
+            padding-right: 1%;
+        }
+    }
+
+    .dashboard_content {
+        display: flex;
+        flex-direction: column;
+
+        .dashboard_content-search {
+            display: flex;
+            height: 45px;
+        }
+    }
+}
+
+.sidepanel {
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, #2a5298, #1e3c72);
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+
+.sidepanel-enable {
+    width: 250px;
+}
+
+.sidepanel-disable {
+    width: 0;
+}
+
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.1s;
+}
+
+.sidepanel a:hover {
+    color: #FFCB05;
+}
+
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.openbtn {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #FFCB05;        
+    color: #2c2a29;
+    padding: 8px 13px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+@media (max-width: 806px) {  
+    .dashboard {    
+        .dashboard_header {
+            justify-content: center;
+    
+            .dashboard_avatar {
+                display: none;
+            }
+        }
+    }
+
+    .openbtn {
+        display: inline;
+    }
+}

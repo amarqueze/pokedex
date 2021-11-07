@@ -1,0 +1,22 @@
+<section class="dashboard">    
+    <header class="dashboard_header">
+        <div class="dashboard_title">
+            <img src="/assets/logo.png" alt="logo">
+        </div>
+        <div class="dashboard_avatar">
+            <app-profile [fullName]="'Alan Marquez Escorcia'"></app-profile>
+        </div>
+    </header>    
+    <div class="dashboard_content">
+        <div class="dashboard_content-search">
+            <app-input-search style="width: 100%;"></app-input-search>
+        </div>
+    </div>
+</section>
+
+<button class="openbtn" (click)="openSidebar()">&#9776;</button>
+<div class="sidepanel" [ngClass]="{'sidepanel-enable': isActiveSidebar, 'sidepanel-disable': !isActiveSidebar}">
+    <a class="closebtn" (click)="closeSidebar()">&times;</a>
+    <a href="#">Hi!, {{ 'Alan Marquez Escorcia' }}</a>
+    <a href="#">Sign Out</a>
+</div>
