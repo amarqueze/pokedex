@@ -29,12 +29,24 @@
     }
 
     .dashboard_content {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: 45px 1fr;
+        overflow: hidden;
 
         .dashboard_content-search {
             display: flex;
+            width: 100%;
             height: 45px;
+        }
+
+        .dashboard_content-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            column-gap: 1%;
+            row-gap: 2%;
+            padding: 2.5%;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
     }
 }
