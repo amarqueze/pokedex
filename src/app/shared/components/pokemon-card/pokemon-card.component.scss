@@ -1,0 +1,134 @@
+.pokemon-card {
+    display: flex;
+    flex-direction: column;        
+    height: 240px;
+    background-color: #ffff;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    .pokemon-card_photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 5px solid #ffff;
+        border-radius: 6px;
+        height: 40%;
+        overflow: hidden;    
+    
+        img {
+            height: 96px;
+            width: 96px;
+        }
+    }
+
+    .pokemon-card_content {
+        display: flex;
+        flex-direction: column;
+        height: 60%;
+        overflow: hidden;
+        color: #2c2a29;
+
+        .pokemon-card_content-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;            
+            text-transform: uppercase;
+            height: 40%;
+        }
+
+        .pokemon-card_content-type {
+            display: flex;
+            column-gap: 5%;
+            align-self: center;
+            span {
+                text-transform: uppercase;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.style-fire {
+    background-color: #c0392b;
+}
+
+.style-normal {
+    background-color: #95a5a6;
+}
+
+.style-fighting {
+    background-color: #95a5a6;
+}
+
+.style-poison {
+    background-color: #B53471;
+}
+
+.style-ground {
+    background-color: #5758BB;
+}
+
+.style-rock {
+    background-color: #95a5a6;
+}
+
+.style-bug {
+    background-color: #9b59b6;
+}
+
+.style-ghost {
+    background-color: #34495e;
+}
+
+.style-steel {
+    background-color: #bdc3c7;
+}
+
+.style-water {
+    background-color: #2980b9;
+}
+
+.style-grass {
+    background-color: #27ae60;
+}
+
+.style-electric {
+    background-color: #f1c40f;
+}
+
+.style-psychic {
+    background-color: #5352ed;
+}
+
+.style-ice {
+    background-color: #70a1ff;
+}
+
+.style-dragon {
+    background-color: #ff4757;
+}
+
+.style-dark {
+    background-color: #2f3542;
+}
+
+.style-fairy {
+    background-color: #c44569;
+}
+
+.style-unknown {
+    background-color: #786fa6;
+}
+
+.style-shadow {
+    background-color: #574b90;
+}
+
+.style-flying {
+    background-color: #95afc0;
+}

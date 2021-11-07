@@ -1,1 +1,23 @@
-<p>pokemon-card works!</p>
+<style>
+    .border-w {
+        border: 1px solid blue;
+    }
+</style>
+
+<section class="pokemon-card">
+    <div class="pokemon-card_photo" [ngClass]="styleCard">
+        <img [src]="pokemon?.detail?.photo ?? ''" [alt]="pokemon.name">
+    </div>
+    <div class="pokemon-card_content">
+        <div class="pokemon-card_content-title">
+            {{ pokemon.name }}
+        </div>
+        <div class="pokemon-card_content-type">
+            <ng-container *ngFor="let type of pokemon?.detail?.types ?? []">
+                <span [ngClass]="Styles[type]">
+                    {{ type }}
+                </span>
+            </ng-container>            
+        </div>
+    </div>
+</section>
