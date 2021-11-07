@@ -1,0 +1,134 @@
+.landing {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f1f2f6;
+    grid-template-rows: 60px 1fr;
+
+    .landing_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: linear-gradient(to right, #2a5298, #1e3c72);
+        box-shadow: 2px 4px 15px 5px rgba(0,0,0,0.28);
+
+        .landing_header-icon {
+            padding-left: 1%;
+            img {     
+                width: 45px;
+                height: 45px;
+            }
+        }
+    
+        .landing_header-button_register {
+            width: 200px;
+            height: 40px;
+            padding-right: 1%;
+        }
+    }
+
+    .landing_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5%;
+        overflow: hidden;
+        width: 100%;
+
+        .landing_content-icon {
+            padding-top: 1.2%;
+        }
+    
+        .landing_content-icon img {
+            width: 600px;
+            height: 200px;
+            margin-right: 48px;
+        }
+    
+        .landing_content-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 20px;
+            width: 400px;
+            min-height: 300px;
+            padding: 20px;
+            border: 0.5px solid gray;
+            background-color: white;
+            border-radius: 30px;    
+        }
+    
+        .landing_content-card_title {  
+            color: #2c2a29;
+            font-size: 24px;
+            font-weight: bold; 
+        }
+    
+        .landing_content-card_content {   
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 550px) and (max-width: 806px) {
+  
+    .landing {     
+        .landing_content { 
+            .landing_content-icon img {
+                width: 350px;
+                height: 160px;
+                margin-right: 30px;
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 549px) {  
+    .landing {     
+
+        .landing_header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            .landing_header-button_register {
+                display: none;
+            }
+        }
+
+
+        .landing_content { 
+            .landing_content-form {
+                width: 80%;
+            }
+
+            .landing_content-icon img {
+                width: 250px;
+                height: 90px;
+                margin-right: 12px;
+            }
+
+            .landing_content-card {
+                width: 100%;
+                padding: 0;
+                border: none;
+                background-color: inherit;
+                border-radius: 0; 
+            }
+        }
+    }    
+}
+
+@media (max-height: 750px) {    
+    .landing { 
+        .landing_content { 
+            .landing_content-icon img {
+                width: 180px;
+                height: 60px;
+                margin-right: 12px;
+            }
+        }
+    }    
+}

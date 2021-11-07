@@ -1,0 +1,45 @@
+<section class="landing">
+    <header class="landing_header">
+        <div class="landing_header-icon">
+            <img src="/assets/pokeball.png" alt="pokeball">
+        </div>
+        <div class="landing_header-button_register">
+            <button class="button-primary"> Register </button>
+        </div>
+    </header>    
+    <div class="landing_content">
+        <div class="landing_content-icon">
+            <img src="/assets/logo-landing.png" alt="logo-landing">
+        </div>
+        <div class="landing_content-form">
+            <ng-container [ngSwitch]="action"> 
+                <ng-container *ngSwitchCase="listAction.SIGN_IN">
+                    <div class="landing_content-card">
+                        <div class="landing_content-card_title">
+                            Sign In
+                        </div>
+                        <div class="landing_content-card_content">
+                            <app-login-form></app-login-form>
+                        </div>
+                        <div>
+                            Don't have an account? 
+                            <span style="color: #2c2a29; cursor: pointer;"> 
+                                Sign Up Now 
+                            </span>
+                        </div>
+                    </div>                  
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    <div class="landing_content-card">
+                        <div class="landing_content-card_title">
+                            Sign Up
+                        </div>
+                        <div class="landing_content-card_content">
+                            <app-register-form></app-register-form>
+                        </div>
+                    </div>   
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</section>
