@@ -3,6 +3,6 @@
     <app-dashboard></app-dashboard>
   </ng-container>
   <ng-container *ngSwitchDefault>
-    <app-landing></app-landing>
+    <app-landing (authenticationSuccess)="changeToLanding()"></app-landing>
   </ng-container>
 </ng-container>

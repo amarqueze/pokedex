@@ -4,7 +4,7 @@
             <img src="/assets/pokeball.png" alt="pokeball">
         </div>
         <div class="landing_header-button_register">
-            <button class="button-primary"> Register </button>
+            <button class="button-primary" (click)="changeFormRegister()"> Register </button>
         </div>
     </header>    
     <div class="landing_content">
@@ -19,11 +19,11 @@
                             Sign In
                         </div>
                         <div class="landing_content-card_content">
-                            <app-login-form></app-login-form>
+                            <app-login-form (submit)="comprobateTrainer($event)"></app-login-form>
                         </div>
                         <div>
                             Don't have an account? 
-                            <span style="color: #2c2a29; cursor: pointer;"> 
+                            <span style="color: #2c2a29; cursor: pointer;" (click)="changeFormRegister()"> 
                                 Sign Up Now 
                             </span>
                         </div>
@@ -35,7 +35,7 @@
                             Sign Up
                         </div>
                         <div class="landing_content-card_content">
-                            <app-register-form></app-register-form>
+                            <app-register-form (submit)="registerTrainer($event)" (cancel)="changeFormLogin()"></app-register-form>
                         </div>
                     </div>   
                 </ng-container>
@@ -43,3 +43,15 @@
         </div>
     </div>
 </section>
+
+<div class="toggle error" *ngIf="isErrorAuthentication">
+    &#9888; Email or Password isn't invalid
+</div>
+
+<div class="toggle error" *ngIf="isErrorRegister">
+    &#9888; Email is already, try again another Email
+</div>
+
+<div class="toggle succcess" *ngIf="isSucccessRegister">
+    &#10003; Pokemon Trainer Registered Successfully! 
+</div>

@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pokedex';
-  hasSession = true;
+  hasSession = false;
 
-  changeToLanding(): void {
-    this.hasSession = false;
+  changeToLanding() {
+    console.log("ejecuta Tu");
+    this.hasSession = true;
   }
 }
