@@ -4,7 +4,10 @@
             <img src="/assets/logo.png" alt="logo">
         </div>
         <div class="dashboard_avatar">
-            <app-profile [fullName]="'Alan Marquez Escorcia'"></app-profile>
+            <app-profile 
+                [fullName]="userActive.fullName.slice(0, 24)"
+                (closeSession)="closeSession()">
+            </app-profile>
         </div>
     </header>    
     <div class="dashboard_content">
@@ -24,8 +27,8 @@
 <button class="openbtn" (click)="openSidebar()">&#9776;</button>
 <div class="sidepanel" [ngClass]="{'sidepanel-enable': isActiveSidebar, 'sidepanel-disable': !isActiveSidebar}">
     <a class="closebtn" (click)="closeSidebar()">&times;</a>
-    <a href="#">Hi!, {{ 'Alan Marquez Escorcia' }}</a>
-    <a href="#">Sign Out</a>
+    <a>Hi!, {{ userActive.fullName.slice(0, 24) }}</a>
+    <a (click)="closeSession()">Sign Out</a>
 </div>
 
 <div class="pagination">

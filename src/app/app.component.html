@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="hasSession"> 
   <ng-container *ngSwitchCase="true">
-    <app-dashboard></app-dashboard>
+    <app-dashboard [userActive]="userActive"></app-dashboard>
   </ng-container>
   <ng-container *ngSwitchDefault>
     <app-landing (authenticationSuccess)="changeToDashboard($event)"></app-landing>

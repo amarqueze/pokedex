@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ProfileComponent {
   @Input() fullName: string = '';
+  @Output() closeSession: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  onCloseSession() {
+    this.closeSession.emit(true);
+  }
 }

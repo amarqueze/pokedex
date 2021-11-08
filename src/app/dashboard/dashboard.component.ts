@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Location } from '@angular/common';
 import { PokemonService } from '../shared/service/pokemon/pokemon.service';
 import { Pokemon } from '../shared/models/Pokemon.model';
+import { User } from '../shared/models/User.model';
+import { LocalStorageService } from '../shared/service/storage/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,15 +24,18 @@ export class DashboardComponent implements OnInit {
   enableBtnPreviuos: boolean = false;
   enableBtnNext: boolean = true;
 
+  @Input() userActive!: User;
+
   constructor(
-    private location: Location, 
-    private pokemonService: PokemonService
+    private location: Location,
+    private pokemonService: PokemonService,
+    private localStorageService: LocalStorageService 
   ) {}
 
   ngOnInit(): void {
     this.location.replaceState('/pokedex');
     this.pokemonService.getAllPokemons()
-      .subscribe(pokemons => this.initDashboard(pokemons));
+      .subscribe(pokemons => this.initDashboard(pokemons));    
   }
 
   initDashboard(pokemons: Pokemon[]) {
@@ -82,5 +88,11 @@ export class DashboardComponent implements OnInit {
     this.numberOfElements = this.numberOfElements - 50;
     this.enableBtnNext = this.numberOfElements < this.filteredPokemons.length ? true : false;
     this.fillDashboard(this.filteredPokemons.slice(this.indexPage, this.numberOfElements));
+  }
+
+  closeSession() {
+    this.localStorageService.removeItem('activeUser');
+    this.location.go('/');
+    window.location.reload();
   }
 }

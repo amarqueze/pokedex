@@ -35,13 +35,11 @@
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {
+    background-color: #ddd; 
+    cursor: pointer;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.btn:hover, .dropdown:hover .btn  {
-    background-color: #0b7dda;
-    color: #fff;
 }
