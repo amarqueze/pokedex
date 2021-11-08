@@ -1,15 +1,28 @@
 <section class="fill-form">
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="input">
             <label>Email</label>
-            <input type="text" name="name"/>
+            <input type="text" name="email" id="loginEmail" formControlName="email" />
+            <ng-container *ngIf="email?.errors && (email?.dirty || email?.touched)">
+                <span class="error" *ngIf="email.errors.required">  
+                    *Email is required
+                </span>
+                <span class="error" *ngIf="email.errors.email">
+                    *Email isn't valid
+                </span>
+            </ng-container>            
         </div>
         <div class="input">
             <label>Password</label>
-            <input type="password" name="password"/>
+            <input type="password" name="password" id="loginPassword" formControlName="password" />
+            <ng-container *ngIf="password?.errors && (password?.dirty || password?.touched)">
+                <span class="error" *ngIf="password.errors.required">  
+                    *Password is required
+                </span>
+            </ng-container>            
         </div>
         <div class="input">
-            <button class="button-primary"> Sign In </button>
+            <button type="submit" class="button-primary" [disabled]="!loginForm.valid"> Sign In </button>
         </div>
     </form>
 </section>
