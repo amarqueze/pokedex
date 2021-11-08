@@ -42,7 +42,6 @@ export class PokemonCardComponent implements OnInit {
         this.pokemon.detail = p;
         this.styleCard = this.Styles[this.pokemon.detail.types[0]];
         this.pokemonChange.emit(this.pokemon);
-        console.log(this.pokemon);
       })
   }
 }
