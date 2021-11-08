@@ -58,7 +58,7 @@
             </span>
         </div>
         <div class="input">
-            <button type="submit" class="button-primary" [disabled]="!registerForm.valid"> Sign Up </button>
+            <button type="submit" class="button-primary" [disabled]="!registerForm.valid || !isSamePassword"> Sign Up </button>
         </div>
         <div class="input">
             <button class="button-secondary" (click)="onCancel()"> Cancel </button>

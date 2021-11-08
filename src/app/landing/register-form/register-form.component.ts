@@ -54,7 +54,6 @@ export class RegisterFormComponent {
 
   onSubmit() {
     if (this.password?.value !== this.rePassword?.value) {
-      this.isSamePassword = false;
       return;
     }
 
