@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RegisterFormComponent } from './landing/register-form/register-form.component';
@@ -13,7 +14,7 @@ import { PokemonDetailComponent } from './shared/components/pokemon-detail/pokem
 import { ProfileComponent } from './shared/components/profile/profile.component';
 
 import { PokemonService } from './shared/service/pokemon/pokemon.service';
-import { StorageService } from './shared/service/storage/storage.service';
+import { LocalStorageService } from './shared/service/storage/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StorageService } from './shared/service/storage/storage.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports: [
     InputSearchComponent,
@@ -37,7 +39,7 @@ import { StorageService } from './shared/service/storage/storage.service';
     PokemonDetailComponent,
     ProfileComponent
   ],
-  providers: [PokemonService, StorageService],
+  providers: [PokemonService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
