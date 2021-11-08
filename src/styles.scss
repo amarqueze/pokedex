@@ -105,4 +105,9 @@ button:focus {
     color: #2c2a29;
     width: 100%;
   }
+
+  span.error {
+    color: red;
+    display: block;
+  }
 }
