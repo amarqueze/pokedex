@@ -1,10 +1,10 @@
-FROM node:10 AS builder
+FROM node:14 AS builder
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm install && ng build
+RUN npm install && npm run build
 
 FROM nginx:alpine
 
