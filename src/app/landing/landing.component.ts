@@ -41,10 +41,19 @@ export class LandingComponent implements OnInit {
   }
 
   registerTrainer(user: any) {
+    if(user.email == undefined) {
+      return;
+    }
+
+    if(this.trainers[user.email] != undefined && this.trainers[user.email] != null) {
+      this.showErrorRegister();
+      return;
+    }
+
+    this.changeFormLogin(); 
     this.trainers[user.email] = user;
     this.localStorageService.saveItem('users', this.trainers);
     this.showRegisterSuccess();
-    this.changeFormLogin();
   }
 
   showErrorAuthentication() {
