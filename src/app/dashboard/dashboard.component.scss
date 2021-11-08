@@ -110,6 +110,35 @@
     background-color: #444;
 }
 
+.pagination {
+    z-index: 1;
+    position: fixed;
+    bottom: 10px;
+    right: 3.4%;    
+}
+
+.pagination-buttons {
+    margin: 0 auto;
+}
+
+.pagination a {
+    background-color: #fff;    
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.pagination a.disabled {
+    background-color: gray;
+    cursor: auto;
+}
+
+.pagination a:hover:not(.disabled) {background-color: #ddd;}
+
 @media (max-width: 806px) {  
     .dashboard {    
         .dashboard_header {

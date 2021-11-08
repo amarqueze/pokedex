@@ -11,7 +11,13 @@ import { Pokemon } from '../shared/models/Pokemon.model';
 })
 export class DashboardComponent implements OnInit { 
   isActiveSidebar: boolean = false;
+  indexPage: number = 0;
+  numberOfElements: number = 50;  
+  allPokemons: Pokemon[] = [];
   pokemons: Pokemon[] = [];
+
+  enableBtnPreviuos: boolean = false;
+  enableBtnNext: boolean = true;
 
   constructor(
     private location: Location, 
@@ -25,7 +31,8 @@ export class DashboardComponent implements OnInit {
   }
 
   initDashboard(pokemons: Pokemon[]) {
-    this.fillDashboard(pokemons.slice(0, 50));
+    this.allPokemons = pokemons;
+    this.fillDashboard(pokemons.slice(this.indexPage, this.numberOfElements));
   }
 
   fillDashboard(pokemons: Pokemon[]) {
@@ -38,5 +45,25 @@ export class DashboardComponent implements OnInit {
 
   closeSidebar(): void {
     this.isActiveSidebar = false;
+  }
+
+  nextPage(): void {
+    if (!this.enableBtnNext) return;
+
+    this.indexPage = this.indexPage + 50;
+    this.enableBtnPreviuos = this.indexPage != 0 ? true : false;
+    this.enableBtnNext = this.numberOfElements < this.allPokemons.length ? true : false;
+    this.numberOfElements = this.numberOfElements + 50;
+    this.fillDashboard(this.allPokemons.slice(this.indexPage, this.numberOfElements));
+  }
+
+  previousPage(): void {
+    if (!this.enableBtnPreviuos) return;
+
+    this.indexPage = this.indexPage - 50;
+    this.enableBtnPreviuos = this.indexPage != 0 ? true : false;    
+    this.numberOfElements = this.numberOfElements - 50;
+    this.enableBtnNext = this.numberOfElements < this.allPokemons.length ? true : false;
+    this.fillDashboard(this.allPokemons.slice(this.indexPage, this.numberOfElements));
   }
 }

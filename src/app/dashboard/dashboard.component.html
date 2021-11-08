@@ -25,3 +25,8 @@
     <a href="#">Hi!, {{ 'Alan Marquez Escorcia' }}</a>
     <a href="#">Sign Out</a>
 </div>
+
+<div class="pagination">
+    <a (click)="previousPage()" [ngClass]="{'disabled': !this.enableBtnPreviuos}"> ❮ </a>
+    <a (click)="nextPage()" [ngClass]="{'disabled': !this.enableBtnNext}"> ❯ </a>
+</div>
