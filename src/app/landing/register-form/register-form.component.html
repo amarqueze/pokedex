@@ -1,26 +1,67 @@
 <section class="fill-form">
-    <form>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="input">
             <label>Fullname</label>
-            <input type="text" name="fullName"/>
+            <input type="text" name="fullName" id="registerFullName" formControlName="fullName"/>
+            <ng-container *ngIf="fullName?.errors && (fullName?.dirty || fullName?.touched)">
+                <span class="error" *ngIf="fullName.errors.required">  
+                    *fullName is required
+                </span>
+                <span class="error" *ngIf="fullName.errors.minlength">
+                    *fullName hasn't at least 5 letters
+                </span>
+            </ng-container>  
         </div>
         <div class="input">
             <label>Email</label>
-            <input type="text" name="email"/>
+            <input type="text" name="email" id="registerEmail" formControlName="email" />
+            <ng-container *ngIf="email?.errors && (email?.dirty || email?.touched)">
+                <span class="error" *ngIf="email.errors.required">  
+                    *Email is required
+                </span>
+                <span class="error" *ngIf="email.errors.email">
+                    *Email isn't valid
+                </span>
+            </ng-container>  
         </div>
         <div class="input">
             <label>Password</label>
-            <input type="password" name="password"/>
+            <input type="password" name="password" id="registerPassword" formControlName="password" />
+            <ng-container *ngIf="password?.errors && (password?.dirty || password?.touched)">
+                <span class="error" *ngIf="password.errors.required">  
+                    *Password is required
+                </span>
+                <span class="error" *ngIf="password.errors.minlength">
+                    *Password hasn't at least 8 letters
+                </span>
+                <span class="error" *ngIf="password.errors.least2UpperCasePassword">
+                    *Password hasn't at least 2 Uppercase letters
+                </span>
+                <span class="error" *ngIf="password.errors.leastSpecialPassword">
+                    *Password hasn't at least one special letters
+                </span>
+                <span class="error" *ngIf="password.errors.leastNumberPassword">
+                    *Password hasn't at least one number
+                </span>
+            </ng-container> 
         </div>
         <div class="input">
             <label>Re-Password</label>
-            <input type="password" name="rePassword"/>
+            <input type="password" name="rePassword" id="registerRePassword" formControlName="rePassword" (keyup)="validateSame($event)"/>
+            <ng-container *ngIf="rePassword?.errors && (rePassword?.dirty || rePassword?.touched)">
+                <span class="error" *ngIf="rePassword.errors.required">  
+                    *Re-Password is required
+                </span>
+            </ng-container> 
+            <span class="error" *ngIf="!isSamePassword && rePassword?.dirty">
+                *Re-password does not match
+            </span>
         </div>
         <div class="input">
-            <button class="button-primary"> Sign Up </button>
+            <button type="submit" class="button-primary" [disabled]="!registerForm.valid"> Sign Up </button>
         </div>
         <div class="input">
-            <button class="button-secondary"> Cancel </button>
+            <button class="button-secondary" (click)="onCancel()"> Cancel </button>
         </div>
     </form>
 </section>
