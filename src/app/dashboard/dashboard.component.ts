@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
 
   filterPokemons(newText: string): void {
     if(newText) {
-      this.filteredPokemons = this.allPokemons.filter(p => p.name.startsWith(newText));
+      this.filteredPokemons = this.allPokemons.filter(p => p.name.startsWith(newText.toLocaleLowerCase()));
     } else {
       this.filteredPokemons = this.allPokemons;   
     }
