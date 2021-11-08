@@ -16,7 +16,7 @@ export class LandingComponent implements OnInit {
   isErrorRegister: boolean = false;
   isSucccessRegister: boolean = false;
 
-  @Output() authenticationSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() authenticationSuccess: EventEmitter<User> = new EventEmitter<User>();
 
   constructor(private localStorageService: LocalStorageService) { }
 
@@ -34,7 +34,7 @@ export class LandingComponent implements OnInit {
 
   comprobateTrainer(user: any) {
     if(this.trainers[user.email] && this.trainers[user.email].password == user.password) {
-      this.authenticationSuccess.emit(true);
+      this.authenticationSuccess.emit(this.trainers[user.email]);
     } else {
       this.showErrorAuthentication();
     }
