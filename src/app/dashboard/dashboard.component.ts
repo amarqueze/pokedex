@@ -14,8 +14,10 @@ export class DashboardComponent implements OnInit {
   indexPage: number = 0;
   numberOfElements: number = 50;  
   allPokemons: Pokemon[] = [];
+  filteredPokemons: Pokemon[] = [];
   pokemons: Pokemon[] = [];
 
+  nameReg: string = ''; 
   enableBtnPreviuos: boolean = false;
   enableBtnNext: boolean = true;
 
@@ -32,11 +34,26 @@ export class DashboardComponent implements OnInit {
 
   initDashboard(pokemons: Pokemon[]) {
     this.allPokemons = pokemons;
+    this.filteredPokemons = pokemons;
     this.fillDashboard(pokemons.slice(this.indexPage, this.numberOfElements));
   }
 
   fillDashboard(pokemons: Pokemon[]) {
     this.pokemons = pokemons;
+  }
+
+  filterPokemons(newText: string): void {
+    if(newText) {
+      this.filteredPokemons = this.allPokemons.filter(p => p.name.startsWith(newText));
+    } else {
+      this.filteredPokemons = this.allPokemons;   
+    }
+
+    this.indexPage = 0;
+    this.numberOfElements = 50;
+    this.enableBtnPreviuos = false;
+    this.enableBtnNext = this.filteredPokemons.length < 50 ? false : true;
+    this.fillDashboard(this.filteredPokemons.slice(this.indexPage, this.numberOfElements));
   }
 
   openSidebar(): void {
@@ -51,10 +68,10 @@ export class DashboardComponent implements OnInit {
     if (!this.enableBtnNext) return;
 
     this.indexPage = this.indexPage + 50;
-    this.enableBtnPreviuos = this.indexPage != 0 ? true : false;
-    this.enableBtnNext = this.numberOfElements < this.allPokemons.length ? true : false;
+    this.enableBtnPreviuos = this.indexPage != 0 ? true : false;    
     this.numberOfElements = this.numberOfElements + 50;
-    this.fillDashboard(this.allPokemons.slice(this.indexPage, this.numberOfElements));
+    this.enableBtnNext = this.numberOfElements < this.filteredPokemons.length ? true : false;
+    this.fillDashboard(this.filteredPokemons.slice(this.indexPage, this.numberOfElements));
   }
 
   previousPage(): void {
@@ -63,7 +80,7 @@ export class DashboardComponent implements OnInit {
     this.indexPage = this.indexPage - 50;
     this.enableBtnPreviuos = this.indexPage != 0 ? true : false;    
     this.numberOfElements = this.numberOfElements - 50;
-    this.enableBtnNext = this.numberOfElements < this.allPokemons.length ? true : false;
-    this.fillDashboard(this.allPokemons.slice(this.indexPage, this.numberOfElements));
+    this.enableBtnNext = this.numberOfElements < this.filteredPokemons.length ? true : false;
+    this.fillDashboard(this.filteredPokemons.slice(this.indexPage, this.numberOfElements));
   }
 }

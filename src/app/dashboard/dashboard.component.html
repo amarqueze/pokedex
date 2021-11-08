@@ -9,7 +9,9 @@
     </header>    
     <div class="dashboard_content">
         <div class="dashboard_content-search">
-            <app-input-search style="width: 100%;"></app-input-search>
+            <app-input-search [text]="nameReg" 
+                (textChange)="filterPokemons($event)"
+            style="width: 100%;"></app-input-search>
         </div>
         <div class="dashboard_content-list">
             <ng-container *ngFor="let pokemon of pokemons">
